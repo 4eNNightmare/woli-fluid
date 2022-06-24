@@ -1,0 +1,47 @@
+{
+  "name": "@woli/react-fluid",
+  "version": "0.0.1",
+  "description": "Cross-platform UI library",
+  "main": "srs/index.ts",
+  "files": [
+    "src/**/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4eNNightmare/woli-react-fluid.git"
+  },
+  "keywords": [
+    "android",
+    "ios",
+    "web",
+    "cross-platform",
+    "ui",
+    "kit",
+    "design system",
+    "design tokens",
+    "component library",
+    "bootstrap"
+  ],
+  "author": "4eNNightmare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4eNNightmare/woli-react-fluid/issues"
+  },
+  "homepage": "https://github.com/4eNNightmare/woli-react-fluid#readme",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/react": "^18.0.14",
+    "@types/react-native": "^0.69.0"
+  },
+  "dependencies": {
+    "colord": "^2.9.2",
+    "deepmerge-ts": "^4.2.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-native": "^0.69.0"
+  }
+}
