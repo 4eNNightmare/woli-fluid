@@ -7,7 +7,6 @@ export interface WoliFluidContextType {
   tokens: DesignTokens
 }
 
-
 const defaultValue: WoliFluidContextType = {
   tokens: buildDesignTokens(BUILD_DESIGN_TOKENS_DEFAULT_PARAMS)
 }

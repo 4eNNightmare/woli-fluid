@@ -13,7 +13,7 @@ interface WoliFluidProviderProps extends Partial<BuildDesignTokensParams> {
   children: React.ReactNode
 }
 
-export default function WoliFluidProvider({
+export function FluidProvider({
   borderRadius = BUILD_DESIGN_TOKENS_DEFAULT_PARAMS.borderRadius,
   children,
   errorKey,

@@ -10,7 +10,13 @@ export interface TypographyBaseProps extends Omit<TextProps, 'children'> {
   size: 'large' | 'medium' | 'small'
 }
 
-export function TypographyBase({ value, role, size, style, ...rest }: TypographyBaseProps) {
+export function TypographyBase({
+  value,
+  role,
+  size,
+  style,
+  ...rest
+}: TypographyBaseProps) {
   const { tokens } = useWoliFluidContext()
   const surfaceContext = useSurfaceContext()
 
@@ -28,7 +34,8 @@ export function TypographyBase({ value, role, size, style, ...rest }: Typography
   )
 }
 
-export interface TypographyProps extends Omit<TypographyBaseProps, 'role' | 'size'> {}
+export interface TypographyProps
+  extends Omit<TypographyBaseProps, 'role' | 'size'> {}
 
 export default {
   Display: {

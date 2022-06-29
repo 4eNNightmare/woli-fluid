@@ -1,5 +1,9 @@
+import {
+  BorderRadiusTokens,
+  buildBorderRadiusTokens,
+  BuildBorderRadiusTokensParams
+} from './border_radius'
 import buildColors, { BuildColorsParams, ColorsTokens } from './colors'
-import { BorderRadiusTokens, buildBorderRadiusTokens, BuildBorderRadiusTokensParams } from './border_radius'
 import buildTypography, {
   BuildTypographyParams,
   TypographyTokens

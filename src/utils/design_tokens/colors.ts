@@ -1,7 +1,6 @@
 import { AnyColor, colord, extend } from 'colord'
-import a11yPlugin from "colord/plugins/a11y"
-import namesPlugin from "colord/plugins/names"
-
+import a11yPlugin from 'colord/plugins/a11y'
+import namesPlugin from 'colord/plugins/names'
 import { ColorValue } from 'react-native'
 
 import { hexFromInt, intFromHex } from '../color_utils'
@@ -124,30 +123,47 @@ export default function buildColors({
   }
 }
 
-export function findColorTokenNameByColor(colorsTokens: ColorsTokens, color: ColorValue) {
-  const colorsNames = Object.keys(colorsTokens) as unknown as [keyof typeof colorsTokens]
-  return colorsNames.find(colorName => colorsTokens[colorName] === color)
+export function findColorTokenNameByColor(
+  colorsTokens: ColorsTokens,
+  color: ColorValue
+) {
+  const colorsNames = Object.keys(colorsTokens) as unknown as [
+    keyof typeof colorsTokens
+  ]
+  return colorsNames.find((colorName) => colorsTokens[colorName] === color)
 }
 
 export function generateOnColor(colorsTokens: ColorsTokens, color: ColorValue) {
   const colorName = findColorTokenNameByColor(colorsTokens, color)
   if (colorName) {
-    const colorsNames = Object.keys(colorsTokens) as unknown as [keyof typeof colorsTokens]
-    const existentOnColor = colorsNames.find(targetColorName => new RegExp(`^on${colorName}$`, 'i').test(targetColorName))
+    const colorsNames = Object.keys(colorsTokens) as unknown as [
+      keyof typeof colorsTokens
+    ]
+    const existentOnColor = colorsNames.find((targetColorName) =>
+      new RegExp(`^on${colorName}$`, 'i').test(targetColorName)
+    )
     if (existentOnColor) {
       return colorsTokens[existentOnColor]
     }
   }
   const containerColorPalette = buildPalette(color as AnyColor)
-  const contrastMap = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99].map((tone) =>  {
-    return {
-      tone,
-      contrast: colord(hexFromPaletteTone(containerColorPalette, tone)).contrast(color as AnyColor)
+  const contrastMap = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99].map(
+    (tone) => {
+      return {
+        tone,
+        contrast: colord(
+          hexFromPaletteTone(containerColorPalette, tone)
+        ).contrast(color as AnyColor)
+      }
     }
-  })
+  )
   const perfectContrastMap = contrastMap.filter(({ contrast }) => contrast >= 7)
-  const goodContrastMap = contrastMap.filter(({ contrast }) => contrast >= 4.5 && contrast < 7)
-  const okContrastMap = contrastMap.filter(({ contrast }) => contrast >= 3 && contrast < 4.5)
+  const goodContrastMap = contrastMap.filter(
+    ({ contrast }) => contrast >= 4.5 && contrast < 7
+  )
+  const okContrastMap = contrastMap.filter(
+    ({ contrast }) => contrast >= 3 && contrast < 4.5
+  )
 
   let newContrastMap: typeof contrastMap = []
 
@@ -160,7 +176,7 @@ export function generateOnColor(colorsTokens: ColorsTokens, color: ColorValue) {
   }
 
   const toneWithLowestValidContrast = newContrastMap.reduce((prev, current) => {
-    return (prev.contrast < current.contrast) ? prev : current
+    return prev.contrast < current.contrast ? prev : current
   }).tone
   return hexFromPaletteTone(containerColorPalette, toneWithLowestValidContrast)
 }
