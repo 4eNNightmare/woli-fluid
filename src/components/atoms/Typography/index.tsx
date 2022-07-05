@@ -1,6 +1,6 @@
 import { deepmerge } from 'deepmerge-ts'
 import React, { useMemo } from 'react'
-import { TextProps, Text } from 'react-native'
+import { TextProps, Text, useWindowDimensions } from 'react-native'
 import RenderHtml, { RenderHTMLProps } from 'react-native-render-html'
 
 import useSurfaceContext from '../../../hooks/useSurfaceContext'
@@ -106,6 +106,7 @@ export default {
   HTML: (props: TypographyHTMLProps) => {
     const { tokens } = useWoliFluidContext()
     const surfaceContext = useSurfaceContext()
+    const { width } = useWindowDimensions()
 
     const tagsStyles = useMemo(() => {
       return {
@@ -150,6 +151,8 @@ export default {
 
     return (
       <RenderHtml
+        {...props}
+        contentWidth={props.contentWidth ?? width}
         tagsStyles={deepmerge(tagsStyles, props.tagsStyles)}
         source={{
           html: props.value
