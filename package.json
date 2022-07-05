@@ -1,6 +1,6 @@
 {
   "name": "@woli/react-fluid",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Cross-platform UI library",
   "main": "index.ts",
   "files": [
