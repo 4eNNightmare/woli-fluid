@@ -1,4 +1,4 @@
-import { deepmerge } from 'deepmerge-ts/*'
+import { deepmerge } from 'deepmerge-ts'
 import React, { useMemo } from 'react'
 import { TextProps, Text } from 'react-native'
 import RenderHtml, { RenderHTMLProps } from 'react-native-render-html'
