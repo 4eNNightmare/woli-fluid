@@ -56,9 +56,6 @@ export default function Surface({
   }, [overlayColor, elevation, tokens.colors, computedContainerColor])
 
   const computedContentColor = useMemo(() => {
-    console.log(
-      contentColor ?? generateOnColor(tokens.colors, containerColorWithOverlay)
-    )
     return (
       contentColor ?? generateOnColor(tokens.colors, containerColorWithOverlay)
     )

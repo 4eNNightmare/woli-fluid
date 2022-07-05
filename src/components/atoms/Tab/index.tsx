@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pressable, View } from 'react-native'
+import { Pressable } from 'react-native'
 
 import useSurfaceContext from '../../../hooks/useSurfaceContext'
 import useWoliFluidContext from '../../../hooks/useWoliFluidContext'

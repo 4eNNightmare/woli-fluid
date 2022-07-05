@@ -1,0 +1,65 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "@woli/react-fluid",
+    }
+  ],
+  "settings": {
+    "explorer.compactFolders": false,
+    "cSpell.language": "en,pt,pt_BR",
+    "editor.bracketPairColorization.enabled": true,
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "colorize.languages": [
+      "css",
+      "sass",
+      "scss",
+      "less",
+      "postcss",
+      "sss",
+      "stylus",
+      "xml",
+      "svg",
+      "javascript"
+    ],
+    "colorize.colorized_colors": [
+      "ARGB",
+      "BROWSERS_COLORS",
+      "HEXA",
+      "HSL",
+      "RGB"
+    ],
+    "colorize.colorized_variables": ["SASS", "LESS", "CSS", "STYLUS"],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "react-native.packager.port": 19000
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "kamikillerto.vscode-colorize",
+      "byCedric.vscode-expo",
+      "msjsdiag.vscode-react-native",
+      "editorconfig.editorconfig",
+      "streetsidesoftware.code-spell-checker",
+      "streetsidesoftware.code-spell-checker-portuguese-brazilian",
+      "Gruntfuggly.todo-tree"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Attach to packager",
+        "cwd": "${workspaceFolder}",
+        "type": "reactnative",
+        "request": "attach",
+        "port": "19000"
+      }
+    ]
+  }
+}

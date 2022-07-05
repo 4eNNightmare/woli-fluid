@@ -1,13 +1,16 @@
 {
-  "name": "woli-react-fluid",
-  "version": "0.0.1",
+  "name": "@woli/react-fluid",
+  "version": "0.0.4",
   "description": "Cross-platform UI library",
   "main": "index.ts",
   "files": [
+    "index.ts",
     "src/**/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "prettier --write . && eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -34,14 +37,30 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/react": "^18.0.14",
-    "@types/react-native": "^0.69.0"
+    "@types/react-native": "^0.69.0",
+    "eslint": "^8.19.0",
+    "eslint-config-universe": "^11.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "colord": "^2.9.2",
-    "deepmerge-ts": "^4.2.1"
+    "deepmerge-ts": "^4.2.1",
+    "react-native-render-html": "^6.3.4"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-native": "^0.69.0"
+    "react": "*",
+    "react-native": "*"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

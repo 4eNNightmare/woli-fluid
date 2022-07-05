@@ -1,13 +1,23 @@
-import React from 'react'
+import { deepmerge } from 'deepmerge-ts/*'
+import React, { useMemo } from 'react'
 import { TextProps, Text } from 'react-native'
+import RenderHtml, { RenderHTMLProps } from 'react-native-render-html'
 
 import useSurfaceContext from '../../../hooks/useSurfaceContext'
 import useWoliFluidContext from '../../../hooks/useWoliFluidContext'
+import {
+  TypographyRole,
+  TypographySize
+} from '../../../utils/design_tokens/typograhy'
 
 export interface TypographyBaseProps extends Omit<TextProps, 'children'> {
   value: string
-  role: 'display' | 'headline' | 'title' | 'label' | 'body'
-  size: 'large' | 'medium' | 'small'
+  role: TypographyRole
+  size: TypographySize
+}
+
+export interface TypographyHTMLProps extends Omit<RenderHTMLProps, 'source'> {
+  value: string
 }
 
 export function TypographyBase({
@@ -91,6 +101,60 @@ export default {
     ),
     Large: (props: TypographyProps) => (
       <TypographyBase role="body" size="large" {...props} />
+    )
+  },
+  HTML: (props: TypographyHTMLProps) => {
+    const { tokens } = useWoliFluidContext()
+    const surfaceContext = useSurfaceContext()
+
+    const tagsStyles = useMemo(() => {
+      return {
+        h1: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['headline-large']
+        },
+        h2: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['headline-medium']
+        },
+        h3: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['headline-small']
+        },
+        h4: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['title-large']
+        },
+        h5: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['title-medium']
+        },
+        h6: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['title-small']
+        },
+        p: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['body-medium']
+        },
+        li: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['body-medium']
+        },
+        div: {
+          color: surfaceContext.contentColor,
+          ...tokens.typography['body-medium']
+        }
+      }
+    }, [tokens.typography, surfaceContext.contentColor])
+
+    return (
+      <RenderHtml
+        tagsStyles={deepmerge(tagsStyles, props.tagsStyles)}
+        source={{
+          html: props.value
+        }}
+      />
     )
   }
 }

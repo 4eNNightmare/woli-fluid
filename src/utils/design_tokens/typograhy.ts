@@ -8,8 +8,11 @@ export interface Typography {
   fontWeight: TextStyle['fontWeight']
 }
 
-export interface TypographyTokens {
-  [key: string]: Typography
+export type TypographyRole = 'display' | 'headline' | 'title' | 'body' | 'label'
+export type TypographySize = 'small' | 'medium' | 'large'
+
+export type TypographyTokens = {
+  [key in `${TypographyRole}-${TypographySize}`]: Typography
 }
 
 export interface BuildTypographyParams {
@@ -67,7 +70,7 @@ export default function buildTypography({
       lineHeight: 28,
       fontSize: 22,
       letterSpacing: 0,
-      fontWeight: '500'
+      fontWeight: '400'
     },
     'title-medium': {
       fontFamily, // Medium
