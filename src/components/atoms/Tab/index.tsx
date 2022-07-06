@@ -1,10 +1,10 @@
 import React from 'react'
 import { Pressable } from 'react-native'
 
-import useSurfaceContext from '../../../hooks/useSurfaceContext'
-import useWoliFluidContext from '../../../hooks/useWoliFluidContext'
-import Surface, { SurfaceProps } from '../Surface'
-import Typography, { TypographyProps } from '../Typography'
+import { useFluidContext } from '../../../hooks/useFluidContext'
+import { useSurfaceContext } from '../../../hooks/useSurfaceContext'
+import { Surface, SurfaceProps } from '../Surface'
+import { Typography, TypographyProps } from '../Typography'
 import styles from './styles'
 
 export interface TabProps extends SurfaceProps {
@@ -15,7 +15,7 @@ export interface TabProps extends SurfaceProps {
   onPress: (key: string) => void
 }
 
-export default function Tab({
+export function Tab({
   title,
   id,
   selected,
@@ -24,7 +24,7 @@ export default function Tab({
   labelProps,
   ...rest
 }: TabProps) {
-  const { tokens } = useWoliFluidContext()
+  const { tokens } = useFluidContext()
   const parentSurface = useSurfaceContext()
 
   return (
@@ -43,7 +43,7 @@ export default function Tab({
         ]}
         {...rest}
       >
-        <Typography.Label.Large value={title} {...labelProps} />
+        <Typography.Label.Medium value={title} {...labelProps} />
       </Surface>
     </Pressable>
   )

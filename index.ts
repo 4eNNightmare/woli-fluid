@@ -1,13 +1,11 @@
-import Surface from './src/components/atoms/Surface'
-import Tab, { TabProps } from './src/components/atoms/Tab'
-import Typography, {
-  TypographyProps,
-  TypographyBaseProps,
-  TypographyBase
-} from './src/components/atoms/Typography'
-import Tabs, { TabsProps } from './src/components/molecules/Tabs'
-import TabView, { TabViewProps } from './src/components/organisms/TabView'
-import useWoliFluidContext from './src/hooks/useWoliFluidContext'
+import { Icon } from './src/components/atoms/Icon'
+import { Surface } from './src/components/atoms/Surface'
+import { Tab, TabProps } from './src/components/atoms/Tab'
+import { Typography, TypographyProps } from './src/components/atoms/Typography'
+import { Card } from './src/components/molecules/Card'
+import { Tabs, TabsProps } from './src/components/molecules/Tabs'
+import { TabView, TabViewProps } from './src/components/organisms/TabView'
+import { useFluidContext } from './src/hooks/useFluidContext'
 import { FluidProvider } from './src/providers/FluidProvider'
 
 export {
@@ -19,9 +17,9 @@ export {
   TabView,
   TabViewProps,
   Typography,
-  TypographyBase,
-  TypographyBaseProps,
   TypographyProps,
-  useWoliFluidContext,
-  FluidProvider
+  useFluidContext,
+  FluidProvider,
+  Icon,
+  Card
 }

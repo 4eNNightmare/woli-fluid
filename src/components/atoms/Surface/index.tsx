@@ -3,10 +3,11 @@ import mixPlugin from 'colord/plugins/mix'
 import React, { useMemo } from 'react'
 import { ColorValue, View, ViewProps } from 'react-native'
 
-import useSurfaceContext from '../../../hooks/useSurfaceContext'
-import useWoliFluidContext from '../../../hooks/useWoliFluidContext'
-import SurfaceProvider from '../../../providers/SurfaceProvider'
+import { useFluidContext } from '../../../hooks/useFluidContext'
+import { useSurfaceContext } from '../../../hooks/useSurfaceContext'
+import { SurfaceProvider } from '../../../providers/SurfaceProvider'
 import { generateOnColor } from '../../../utils/design_tokens/colors'
+import { Shadow } from './shadow'
 
 extend([mixPlugin])
 
@@ -18,16 +19,30 @@ export interface SurfaceProps extends ViewProps {
 }
 
 function Container({ children, style, ...rest }: ViewProps) {
-  const { containerColor } = useSurfaceContext()
+  const { containerColor, elevation } = useSurfaceContext()
+  const viewStyle = useMemo(
+    () => [{ backgroundColor: containerColor }, style],
+    [containerColor, style]
+  )
+
+  if (elevation === 0) {
+    return (
+      <View style={viewStyle} {...rest}>
+        {children}
+      </View>
+    )
+  }
 
   return (
-    <View style={[{ backgroundColor: containerColor }, style]} {...rest}>
-      {children}
-    </View>
+    <Shadow elevation={elevation} viewStyle={viewStyle}>
+      <View style={viewStyle} {...rest}>
+        {children}
+      </View>
+    </Shadow>
   )
 }
 
-export default function Surface({
+export function Surface({
   children,
   elevation = 0,
   containerColor,
@@ -35,7 +50,7 @@ export default function Surface({
   overlayColor,
   ...rest
 }: SurfaceProps) {
-  const { tokens } = useWoliFluidContext()
+  const { tokens } = useFluidContext()
   const parentSurface = useSurfaceContext()
 
   const computedContainerColor = useMemo(() => {

@@ -63,7 +63,7 @@ function hexFromPaletteTone(palette: TonalPalette, tone: number) {
   return hexFromInt(palette.tone(tone))
 }
 
-export default function buildColors({
+export function buildColors({
   primaryKey,
   secondaryKey,
   errorKey,

@@ -3,8 +3,9 @@ import {
   buildBorderRadiusTokens,
   BuildBorderRadiusTokensParams
 } from './border_radius'
-import buildColors, { BuildColorsParams, ColorsTokens } from './colors'
-import buildTypography, {
+import { buildColors, BuildColorsParams, ColorsTokens } from './colors'
+import {
+  buildTypography,
   BuildTypographyParams,
   TypographyTokens
 } from './typograhy'
@@ -20,7 +21,7 @@ export interface BuildDesignTokensParams
     BuildTypographyParams,
     BuildBorderRadiusTokensParams {}
 
-export default function buildDesignTokens(
+export function buildDesignTokens(
   params: BuildDesignTokensParams
 ): DesignTokens {
   return {

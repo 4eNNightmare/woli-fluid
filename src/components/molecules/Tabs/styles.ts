@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
   tabs: {
-    paddingVertical: 8
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row'
   }
 })

@@ -19,7 +19,7 @@ export interface BuildTypographyParams {
   fontFamily: TextStyle['fontFamily']
 }
 
-export default function buildTypography({
+export function buildTypography({
   fontFamily
 }: BuildTypographyParams): TypographyTokens {
   return {

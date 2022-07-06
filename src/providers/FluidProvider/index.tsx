@@ -2,13 +2,14 @@ import { deepmerge } from 'deepmerge-ts'
 import * as React from 'react'
 
 import { BUILD_DESIGN_TOKENS_DEFAULT_PARAMS } from '../../constants/design_tokens'
-import { WoliFluidContext } from '../../contexts/woliFluid'
-import buildDesignTokens, {
+import { FluidContext } from '../../contexts/fluid'
+import {
+  buildDesignTokens,
   BuildDesignTokensParams,
   DesignTokens
 } from '../../utils/design_tokens'
 
-interface WoliFluidProviderProps extends Partial<BuildDesignTokensParams> {
+interface FluidProviderProps extends Partial<BuildDesignTokensParams> {
   tokensOverride?: Partial<DesignTokens>
   children: React.ReactNode
 }
@@ -22,10 +23,11 @@ export function FluidProvider({
   primaryKey = BUILD_DESIGN_TOKENS_DEFAULT_PARAMS.primaryKey,
   secondaryKey = BUILD_DESIGN_TOKENS_DEFAULT_PARAMS.secondaryKey,
   tokensOverride = {}
-}: WoliFluidProviderProps) {
+}: FluidProviderProps) {
   return (
-    <WoliFluidContext.Provider
+    <FluidContext.Provider
       value={{
+        mode,
         tokens: deepmerge(
           buildDesignTokens({
             borderRadius,
@@ -40,6 +42,6 @@ export function FluidProvider({
       }}
     >
       {children}
-    </WoliFluidContext.Provider>
+    </FluidContext.Provider>
   )
 }

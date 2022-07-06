@@ -11,7 +11,7 @@ interface SurfaceProviderProps {
   children: React.ReactNode
 }
 
-export default function SurfaceProvider({
+export function SurfaceProvider({
   children,
   elevation = 0,
   containerColor,

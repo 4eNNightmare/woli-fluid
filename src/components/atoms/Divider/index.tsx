@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, ViewProps } from 'react-native'
 
-import useSurfaceContext from '../../../hooks/useSurfaceContext'
+import { useSurfaceContext } from '../../../hooks/useSurfaceContext'
 
 export interface SurfaceProps extends Omit<ViewProps, 'children'> {}
 
-export default function Divider({ style, ...rest }: SurfaceProps) {
+export function Divider({ style, ...rest }: SurfaceProps) {
   const { contentColor } = useSurfaceContext()
   return (
     <View

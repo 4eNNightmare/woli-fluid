@@ -50,9 +50,11 @@
   "dependencies": {
     "colord": "^2.9.2",
     "deepmerge-ts": "^4.2.1",
-    "react-native-render-html": "^6.3.4"
+    "react-native-render-html": "^6.3.4",
+    "react-native-shadow-2": "^6.0.5"
   },
   "peerDependencies": {
+    "react-native-svg": "*",
     "react": "*",
     "react-native": "*"
   },

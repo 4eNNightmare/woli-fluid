@@ -1,21 +1,21 @@
 import React from 'react'
 
-import useWoliFluidContext from '../../../hooks/useWoliFluidContext'
-import Divider from '../../atoms/Divider/indenx'
-import Surface from '../../atoms/Surface'
-import Tabs from '../../molecules/Tabs'
+import { useFluidContext } from '../../../hooks/useFluidContext'
+import { Divider } from '../../atoms/Divider'
+import { Surface } from '../../atoms/Surface'
+import { Tabs } from '../../molecules/Tabs'
 
 export interface TabViewProps {
   data: {
-    id: string
+    key: string
     title: string
     component: React.ReactNode
   }[]
 }
 
-export default function TabView({ data }: TabViewProps) {
-  const { tokens } = useWoliFluidContext()
-  const [selectedTab, setSelectedTab] = React.useState(data[0].id)
+export function TabView({ data }: TabViewProps) {
+  const { tokens } = useFluidContext()
+  const [selectedTab, setSelectedTab] = React.useState(data[0].key)
 
   return (
     <Surface containerColor={tokens.colors.background}>
@@ -27,9 +27,8 @@ export default function TabView({ data }: TabViewProps) {
           setSelectedTab(id)
         }}
       />
-      <Divider />
       <Surface containerColor={tokens.colors.background}>
-        {data.find((tab) => tab.id === selectedTab)?.component}
+        {data.find((tab) => tab.key === selectedTab)?.component}
       </Surface>
     </Surface>
   )

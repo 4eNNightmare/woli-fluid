@@ -3,8 +3,8 @@ import React, { useMemo } from 'react'
 import { TextProps, Text, useWindowDimensions } from 'react-native'
 import RenderHtml, { RenderHTMLProps } from 'react-native-render-html'
 
-import useSurfaceContext from '../../../hooks/useSurfaceContext'
-import useWoliFluidContext from '../../../hooks/useWoliFluidContext'
+import { useFluidContext } from '../../../hooks/useFluidContext'
+import { useSurfaceContext } from '../../../hooks/useSurfaceContext'
 import {
   TypographyRole,
   TypographySize
@@ -27,7 +27,7 @@ export function TypographyBase({
   style,
   ...rest
 }: TypographyBaseProps) {
-  const { tokens } = useWoliFluidContext()
+  const { tokens } = useFluidContext()
   const surfaceContext = useSurfaceContext()
 
   return (
@@ -47,7 +47,7 @@ export function TypographyBase({
 export interface TypographyProps
   extends Omit<TypographyBaseProps, 'role' | 'size'> {}
 
-export default {
+export const Typography = {
   Display: {
     Small: (props: TypographyProps) => (
       <TypographyBase role="display" size="small" {...props} />
@@ -104,46 +104,40 @@ export default {
     )
   },
   HTML: (props: TypographyHTMLProps) => {
-    const { tokens } = useWoliFluidContext()
+    const { tokens } = useFluidContext()
     const surfaceContext = useSurfaceContext()
     const { width } = useWindowDimensions()
 
     const tagsStyles = useMemo(() => {
       return {
+        body: {
+          color: surfaceContext.contentColor
+        },
         h1: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['headline-large']
         },
         h2: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['headline-medium']
         },
         h3: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['headline-small']
         },
         h4: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['title-large']
         },
         h5: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['title-medium']
         },
         h6: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['title-small']
         },
         p: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['body-medium']
         },
         li: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['body-medium']
         },
         div: {
-          color: surfaceContext.contentColor,
           ...tokens.typography['body-medium']
         }
       }
