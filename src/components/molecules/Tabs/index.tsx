@@ -28,6 +28,7 @@ export function Tabs({
   return (
     <>
       <Surface
+        elevation={1}
         containerColor={tokens.colors.surface}
         style={[styles.tabs, style]}
         {...rest}

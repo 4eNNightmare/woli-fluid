@@ -1,6 +1,6 @@
 {
   "name": "@woli/react-fluid",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Cross-platform UI library",
   "main": "index.ts",
   "files": [
@@ -54,9 +54,9 @@
     "react-native-shadow-2": "^6.0.5"
   },
   "peerDependencies": {
-    "react-native-svg": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "^12.3.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
